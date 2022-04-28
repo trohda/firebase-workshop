@@ -1,6 +1,7 @@
 import { db } from "./db";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Blog from "./Blog";
 
 const Blogs = () => {
   const [blogs, setBlogsList] = useState([]);
@@ -27,12 +28,12 @@ const Blogs = () => {
     <div>
       <h1>All blogs</h1>
       {blogs.map((el) => (
-        <div key={el.id}>
-          <h2>{el.title}</h2>
-          <p>{el.content}</p>
-          <span>---{el.author}</span>
-          <hr />
-        </div>
+        <Blog
+          key={el.id}
+          title={el.title}
+          content={el.content}
+          author={el.author}
+        />
       ))}
     </div>
   );
